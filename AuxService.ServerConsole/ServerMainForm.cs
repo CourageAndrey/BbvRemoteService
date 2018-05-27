@@ -9,7 +9,6 @@ using AuxService.Core.SalePoints.Queries;
 using AuxService.Core.Transfer;
 using DevExpress.XtraEditors;
 using Sef.DX;
-using Sef.Sql;
 using Sef.Utility.Database;
 using Sef.Utility.Xml;
 
@@ -31,9 +30,6 @@ namespace AuxService.ServerConsole
 
       var test = new SalePointList();
       test.SalePoints = new List<SalePointRecordXml>{ new SalePointRecordXml() };
-
-      // включение SQL-доступа к данным
-      DatabaseHelper.RegisterHelper(new DatabaseHelperSql());
       
       // загрузка списка точек
       initializeSalePoints();

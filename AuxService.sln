@@ -23,13 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{CF
 		External\DevExpress.XtraPrinting.v11.2.dll = External\DevExpress.XtraPrinting.v11.2.dll
 		External\ICSharpCode.SharpZipLib.dll = External\ICSharpCode.SharpZipLib.dll
 		External\log4net.dll = External\log4net.dll
-		External\Microsoft.SqlServer.BatchParser.dll = External\Microsoft.SqlServer.BatchParser.dll
-		External\Microsoft.SqlServer.ConnectionInfo.dll = External\Microsoft.SqlServer.ConnectionInfo.dll
-		External\Microsoft.SqlServer.Smo.dll = External\Microsoft.SqlServer.Smo.dll
-		External\Microsoft.SqlServer.SmoEnum.dll = External\Microsoft.SqlServer.SmoEnum.dll
-		External\Microsoft.SqlServer.SqlEnum.dll = External\Microsoft.SqlServer.SqlEnum.dll
 		External\Sef.DX.dll = External\Sef.DX.dll
-		External\Sef.Sql.dll = External\Sef.Sql.dll
 		External\Sef.Utility.dll = External\Sef.Utility.dll
 	EndProjectSection
 EndProject
@@ -43,8 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ru", "ru", "{A1585E8C-8D50-
 		External\ru\DevExpress.XtraLayout.v11.2.resources.dll = External\ru\DevExpress.XtraLayout.v11.2.resources.dll
 		External\ru\DevExpress.XtraPrinting.v11.2.resources.dll = External\ru\DevExpress.XtraPrinting.v11.2.resources.dll
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.BackupChecker", "AuxService.BackupChecker\AuxService.BackupChecker.csproj", "{9F765200-2E67-442C-822B-F046ECE96E55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.Installer", "AuxService.Installer\AuxService.Installer.csproj", "{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}"
 EndProject
@@ -98,16 +90,6 @@ Global
 		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|x86.ActiveCfg = Release|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|x86.ActiveCfg = Release|Any CPU
 		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

@@ -7,7 +7,6 @@ using AuxService.Core.Service;
 using AuxService.Core.Settings;
 using AuxService.Core.Transfer;
 using Microsoft.Win32;
-using Sef.Sql;
 using Sef.Utility.Applications;
 using Sef.Utility.Database;
 using Sef.Utility.Log;
@@ -38,7 +37,6 @@ namespace AuxService.ClientService
       ServiceName = Constants.ClientServiceDisplayName;
       Directory.SetCurrentDirectory(Application.StartupPath);
       OsHelper.RenameCurrentThread(Constants.ThreadClient);
-      DatabaseHelper.RegisterHelper(new DatabaseHelperSql());
       XmlConfigurator.Configure(new FileInfo(Path.Combine(Application.StartupPath, "LoggerConfig.xml")));
       logMain = LogManager.GetLogger(Constants.LogService);
       logSpooler = LogManager.GetLogger(Constants.LogSpooler);

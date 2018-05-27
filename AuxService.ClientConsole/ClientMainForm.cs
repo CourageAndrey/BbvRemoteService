@@ -8,7 +8,6 @@ using AuxService.Core.Settings;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using Sef.DX;
-using Sef.Sql;
 using Sef.Utility.Database;
 
 namespace AuxService.ClientConsole
@@ -26,9 +25,6 @@ namespace AuxService.ClientConsole
     public ClientMainForm()
     {
       InitializeComponent();
-
-      // включение SQL-доступа к данным
-      DatabaseHelper.RegisterHelper(new DatabaseHelperSql());
 
       // чтение настроек
       Config.LoadOrCreate();

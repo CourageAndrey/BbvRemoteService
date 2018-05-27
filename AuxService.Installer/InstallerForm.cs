@@ -11,7 +11,6 @@ using AuxService.Core.Settings;
 using AuxService.Core.Transfer;
 using DevExpress.XtraEditors;
 using Microsoft.Win32;
-using Sef.Sql;
 using Sef.Utility.Common;
 using Sef.Utility.Database;
 
@@ -30,7 +29,6 @@ namespace AuxService.Installer
     public InstallerForm()
     {
       InitializeComponent();
-      DatabaseHelper.RegisterHelper(new DatabaseHelperSql());
     }
 
     private List<ServiceRecord> services;
