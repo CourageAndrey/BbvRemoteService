@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42E3AE3E-7962-4764-B524-86E70C96912D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AuxService.Core</RootNamespace>
+    <AssemblyName>AuxService.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\AuxService.Core.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v11.2.Core, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Sef\External\DevExpress.Utils.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Sef\External\DevExpress.XtraEditors.v11.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\External\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="Sef.DX">
+      <HintPath>..\External\Sef.DX.dll</HintPath>
+    </Reference>
+    <Reference Include="Sef.Utility">
+      <HintPath>..\External\Sef.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\ConnectionStringDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\ConnectionStringDialog.Designer.cs">
+      <DependentUpon>ConnectionStringDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\NetworkHelper.cs" />
+    <Compile Include="Helpers\OsHelper.cs" />
+    <Compile Include="Helpers\VelcomHelper.cs" />
+    <Compile Include="Helpers\WmiHelper.cs" />
+    <Compile Include="SalePoints\Contact.cs" />
+    <Compile Include="SalePoints\Forms\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalePoints\Forms\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalePoints\Forms\PrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalePoints\Forms\PrintForm.Designer.cs">
+      <DependentUpon>PrintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalePoints\Forms\StatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalePoints\Forms\StatusForm.Designer.cs">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalePoints\Forms\SystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalePoints\Forms\SystemForm.Designer.cs">
+      <DependentUpon>SystemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalePoints\Forms\VelcomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalePoints\Forms\VelcomForm.Designer.cs">
+      <DependentUpon>VelcomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalePoints\Forms\VersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalePoints\Forms\VersionForm.Designer.cs">
+      <DependentUpon>VersionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalePoints\IDatabaseInfo.cs" />
+    <Compile Include="SalePoints\Person.cs" />
+    <Compile Include="SalePoints\Queries\LogInfo.cs" />
+    <Compile Include="SalePoints\Queries\PrintInfo.cs" />
+    <Compile Include="SalePoints\Queries\StatusInfo.cs" />
+    <Compile Include="SalePoints\Queries\VelcomInfo.cs" />
+    <Compile Include="SalePoints\Queries\VersionInfo.cs" />
+    <Compile Include="SalePoints\SalePoint.cs" />
+    <Compile Include="SalePoints\Region.cs" />
+    <Compile Include="SalePoints\SalePoint records.cs" />
+    <Compile Include="Service\SelectServiceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\SelectServiceDialog.Designer.cs">
+      <DependentUpon>SelectServiceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ServiceRecord.cs" />
+    <Compile Include="Service\Constants.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalePoints\Queries\SystemInfo.cs" />
+    <Compile Include="Settings\Config.cs" />
+    <Compile Include="Settings\DatabaseWrapper.cs" />
+    <Compile Include="Transfer\Client.cs" />
+    <Compile Include="Transfer\Packet.cs" />
+    <Compile Include="Transfer\Protocol.cs" />
+    <Compile Include="Transfer\Server.cs" />
+    <Compile Include="Transfer\Support classes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Log\Spooler.log">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\DataSources\AuxService.Core.SalePoints.Queries.PrintInfo.datasource" />
+    <None Include="Properties\DataSources\AuxService.Core.SalePoints.Queries.StatusInfo.datasource" />
+    <None Include="Properties\DataSources\AuxService.Core.SalePoints.Queries.SystemInfo.datasource" />
+    <None Include="Properties\DataSources\AuxService.Core.SalePoints.Queries.VelcomInfo.datasource" />
+    <None Include="Properties\DataSources\AuxService.Core.SalePoints.Queries.VersionInfo.datasource" />
+    <None Include="Properties\DataSources\AuxService.Core.Service.ServiceRecord.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ru\DevExpress.Data.v11.2.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ru\DevExpress.Utils.v11.2.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ru\DevExpress.XtraBars.v11.2.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ru\DevExpress.XtraEditors.v11.2.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ru\DevExpress.XtraGrid.v11.2.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ru\DevExpress.XtraLayout.v11.2.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SalePointIps.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Log\Service.log">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Helpers\ConnectionStringDialog.resx">
+      <DependentUpon>ConnectionStringDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="SalePoints\Forms\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalePoints\Forms\PrintForm.resx">
+      <DependentUpon>PrintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalePoints\Forms\StatusForm.resx">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalePoints\Forms\SystemForm.resx">
+      <DependentUpon>SystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalePoints\Forms\VelcomForm.resx">
+      <DependentUpon>VelcomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalePoints\Forms\VersionForm.resx">
+      <DependentUpon>VersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\SelectServiceDialog.resx">
+      <DependentUpon>SelectServiceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

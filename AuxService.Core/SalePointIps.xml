@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SalePointList>
+  <All>
+    <SalePoint Code = "022202" IP = "172.16.0.169" AUX="true" />
+    <SalePoint Code = "022203" IP = "172.16.0.163" AUX="true" />
+    <SalePoint Code = "022204" IP = "172.16.0.160" AUX="true" />
+    <SalePoint Code = "022205" IP = "172.16.0.196" AUX="true" />
+    <SalePoint Code = "022207" IP = "172.16.0.167" AUX="true" />
+    <SalePoint Code = "022208" IP = "172.16.0.200" AUX="true" />
+    <SalePoint Code = "022209" IP = "172.16.0.166" AUX="true" />
+    <SalePoint Code = "022211" IP = "172.16.0.168" AUX="true" />
+    <SalePoint Code = "022213" IP = "172.16.0.197" AUX="true" />
+    <SalePoint Code = "022214" IP = "172.16.0.195" AUX="false" />
+    <SalePoint Code = "022217" IP = "172.16.0.165" AUX="true" />
+    <SalePoint Code = "022232" IP = "172.16.0.161" AUX="true" />
+    <SalePoint Code = "022251" IP = "172.16.0.164" AUX="true" />
+    <SalePoint Code = "022271" IP = "172.16.0.198" AUX="true" />
+    <SalePoint Code = "022218" IP = "172.16.0.199" AUX="true" />
+    <SalePoint Code = "022233" IP = "172.16.0.162" AUX="true" />
+    <SalePoint Code = "022241" IP = "172.16.0.170" />
+    <SalePoint Code = "022206" IP = "172.16.0.201" AUX="true" />
+    <SalePoint Code = "022303" IP = "172.16.0.205" />
+    <SalePoint Code = "022304" IP = "172.16.0.141" AUX="true" />
+    <SalePoint Code = "022306" IP = "172.16.0.129" AUX="true" />
+    <SalePoint Code = "022311" IP = "172.16.0.175" AUX="true" />
+    <SalePoint Code = "022312" IP = "172.16.0.140" AUX="true" />
+    <SalePoint Code = "022313" IP = "172.16.0.178" AUX="true" />
+    <SalePoint Code = "022315" IP = "172.16.0.138" AUX="true" />
+    <SalePoint Code = "022319" IP = "172.16.0.224" AUX="true" />
+    <SalePoint Code = "022321" IP = "172.16.0.150" AUX="true" />
+    <SalePoint Code = "022341" IP = "172.16.0.142" AUX="true" />
+    <SalePoint Code = "022351" IP = "172.16.0.204" AUX="true" />
+    <SalePoint Code = "022361" IP = "172.16.0.176" />
+    <SalePoint Code = "022364" IP = "172.16.0.177" AUX="true" />
+    <SalePoint Code = "022381" IP = "172.16.0.203" />
+    <SalePoint Code = "022103" IP = "172.16.0.218" AUX="true" />
+    <SalePoint Code = "022104" IP = "172.16.0.216" AUX="true" />
+    <SalePoint Code = "022105" IP = "172.16.0.212" AUX="true" />
+    <SalePoint Code = "022107" IP = "172.16.0.215" AUX="true" />
+    <SalePoint Code = "022109" IP = "172.16.0.213" AUX="true" />
+    <SalePoint Code = "022111" IP = "172.16.0.130" AUX="true" />
+    <SalePoint Code = "022112" IP = "172.16.0.214" AUX="true" />
+    <SalePoint Code = "022114" IP = "172.16.0.219" AUX="false" />
+    <SalePoint Code = "022115" IP = "192.168.12.2" AUX="false" />
+    <SalePoint Code = "022613" IP = "192.168.1.118" AUX="true" />
+    <SalePoint Code = "022403" IP = "172.16.0.226" AUX="true" />
+    <SalePoint Code = "022406" IP = "172.16.0.194" />
+    <SalePoint Code = "022409" IP = "172.16.0.132" AUX="false" />
+    <SalePoint Code = "022411" IP = "172.16.0.228" />
+    <SalePoint Code = "022413" IP = "172.16.0.221" AUX="true" />
+    <SalePoint Code = "022415" IP = "192.168.45.2" AUX="true" />
+    <SalePoint Code = "022417" IP = "172.16.0.222" AUX="true" />
+    <SalePoint Code = "022418" IP = "172.16.0.220" AUX="true" />
+    <SalePoint Code = "022419" IP = "172.16.0.241" AUX="true" />
+    <SalePoint Code = "022421" IP = "172.16.0.133" AUX="false" />
+    <SalePoint Code = "022422" IP = "172.16.0.227" AUX="true" />
+    <SalePoint Code = "022423" IP = "172.16.0.229" />
+    <SalePoint Code = "022432" IP = "172.16.0.193" AUX="false" />
+    <SalePoint Code = "022433" IP = "172.16.0.190" AUX="false" />
+    <SalePoint Code = "022434" IP = "172.16.0.191" AUX="false" />
+    <SalePoint Code = "022435" IP = "172.16.0.192" AUX="false" />
+    <SalePoint Code = "022503" IP = "172.16.0.182" AUX="true" />
+    <SalePoint Code = "022505" IP = "172.16.0.181" AUX="true" />
+    <SalePoint Code = "022506" IP = "172.16.0.155" AUX="true" />
+    <SalePoint Code = "022507" IP = "172.16.0.183" AUX="true" />
+    <SalePoint Code = "022509" IP = "172.16.0.152" AUX="true" />
+    <SalePoint Code = "022511" IP = "172.16.0.156" AUX="true" />
+    <SalePoint Code = "022512" IP = "172.16.0.184" AUX="true" />
+    <SalePoint Code = "022513" IP = "172.16.0.153" />
+    <SalePoint Code = "022514" IP = "172.16.0.136" AUX="true" />
+    <SalePoint Code = "022515" IP = "172.16.0.137" />
+    <SalePoint Code = "022516" IP = "172.16.0.185" AUX="true" />
+    <SalePoint Code = "022518" IP = "172.16.0.134" AUX="true" />
+    <SalePoint Code = "022519" IP = "172.16.0.143" AUX="true" />
+    <SalePoint Code = "022542" IP = "172.16.0.179" />
+    <SalePoint Code = "022543" IP = "172.16.0.180" AUX="true" />
+    <SalePoint Code = "022571" IP = "172.16.0.154" />
+    <SalePoint Code = "022602" IP = "172.16.0.139" AUX="true" />
+    <SalePoint Code = "022603" IP = "172.16.0.174" AUX="false" />
+    <SalePoint Code = "022604" IP = "172.16.0.135" AUX="true" />
+    <SalePoint Code = "022606" IP = "172.16.0.148" AUX="true" />
+    <SalePoint Code = "022607" IP = "172.16.0.188" AUX="false"/>
+    <SalePoint Code = "022608" IP = "172.16.0.159" AUX="true" />
+    <SalePoint Code = "022611" IP = "172.16.0.223" AUX="false"/>
+    <SalePoint Code = "022614" IP = "172.16.0.149" AUX="false" />
+    <SalePoint Code = "022615" IP = "172.16.0.235" AUX="true" />
+    <SalePoint Code = "022616" IP = "172.16.0.225" AUX="false" />
+    <SalePoint Code = "022617" IP = "172.16.0.186" AUX="false" />
+    <SalePoint Code = "022618" IP = "172.16.0.187" AUX="true" />
+    <SalePoint Code = "022619" IP = "172.16.0.172" AUX="true" />
+    <SalePoint Code = "022621" IP = "172.16.0.189" AUX="false" />
+    <SalePoint Code = "022623" IP = "172.16.0.171" AUX="true" />
+    <SalePoint Code = "022625" IP = "172.16.0.211" AUX="true" />
+    <SalePoint Code = "022661" IP = "172.16.0.173" AUX="true" />
+    <SalePoint Code = "022681" IP = "172.16.0.151" AUX="false" />
+    <SalePoint Code = "022704" IP = "172.16.0.210" />
+    <SalePoint Code = "022705" IP = "172.16.0.217" AUX="true" />
+    <SalePoint Code = "022708" IP = "172.16.0.206" AUX="true" />
+    <SalePoint Code = "022709" IP = "172.16.0.230" />
+    <SalePoint Code = "022717" IP = "172.16.0.146" AUX="true" />
+    <SalePoint Code = "022718" IP = "172.16.0.202" AUX="true" />
+    <SalePoint Code = "022719" IP = "172.16.0.232" />
+    <SalePoint Code = "022721" IP = "172.16.0.231" />
+    <SalePoint Code = "022723" IP = "172.16.0.144" AUX="true" />
+    <SalePoint Code = "022724" IP = "172.16.0.147" />
+    <SalePoint Code = "022741" IP = "172.16.0.207" AUX="true" />
+    <SalePoint Code = "022751" IP = "172.16.0.233" AUX="true" />
+    <SalePoint Code = "022761" IP = "172.16.0.145" />
+    <SalePoint Code = "022773" IP = "172.16.0.208" AUX="true" />
+    <SalePoint Code = "022774" IP = "172.16.0.209" AUX="true" />
+    <SalePoint Code = "022118" IP = "172.16.0.181" AUX="false" />
+  </All>
+</SalePointList>

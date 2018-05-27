@@ -1,0 +1,128 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.ServerConsole", "AuxService.ServerConsole\AuxService.ServerConsole.csproj", "{66130080-F8FA-43B9-B162-F84E878CA4E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.ClientConsole", "AuxService.ClientConsole\AuxService.ClientConsole.csproj", "{567D814A-7607-4CC8-8F67-C1819134AB10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.ClientService", "AuxService.ClientService\AuxService.ClientService.csproj", "{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.Core", "AuxService.Core\AuxService.Core.csproj", "{42E3AE3E-7962-4764-B524-86E70C96912D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{CFC8526E-A37E-4AB5-9352-B5758E941CEE}"
+	ProjectSection(SolutionItems) = preProject
+		External\DevExpress.BonusSkins.v11.2.dll = External\DevExpress.BonusSkins.v11.2.dll
+		External\DevExpress.Data.v11.2.dll = External\DevExpress.Data.v11.2.dll
+		External\DevExpress.Utils.v11.2.dll = External\DevExpress.Utils.v11.2.dll
+		External\DevExpress.XtraBars.v11.2.dll = External\DevExpress.XtraBars.v11.2.dll
+		External\DevExpress.XtraEditors.v11.2.dll = External\DevExpress.XtraEditors.v11.2.dll
+		External\DevExpress.XtraGrid.v11.2.dll = External\DevExpress.XtraGrid.v11.2.dll
+		External\DevExpress.XtraLayout.v11.2.dll = External\DevExpress.XtraLayout.v11.2.dll
+		External\DevExpress.XtraPrinting.v11.2.dll = External\DevExpress.XtraPrinting.v11.2.dll
+		External\ICSharpCode.SharpZipLib.dll = External\ICSharpCode.SharpZipLib.dll
+		External\log4net.dll = External\log4net.dll
+		External\Microsoft.SqlServer.BatchParser.dll = External\Microsoft.SqlServer.BatchParser.dll
+		External\Microsoft.SqlServer.ConnectionInfo.dll = External\Microsoft.SqlServer.ConnectionInfo.dll
+		External\Microsoft.SqlServer.Smo.dll = External\Microsoft.SqlServer.Smo.dll
+		External\Microsoft.SqlServer.SmoEnum.dll = External\Microsoft.SqlServer.SmoEnum.dll
+		External\Microsoft.SqlServer.SqlEnum.dll = External\Microsoft.SqlServer.SqlEnum.dll
+		External\Sef.DX.dll = External\Sef.DX.dll
+		External\Sef.Sql.dll = External\Sef.Sql.dll
+		External\Sef.Utility.dll = External\Sef.Utility.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ru", "ru", "{A1585E8C-8D50-43F8-8049-9C26D0683D56}"
+	ProjectSection(SolutionItems) = preProject
+		External\ru\DevExpress.Data.v11.2.resources.dll = External\ru\DevExpress.Data.v11.2.resources.dll
+		External\ru\DevExpress.Utils.v11.2.resources.dll = External\ru\DevExpress.Utils.v11.2.resources.dll
+		External\ru\DevExpress.XtraBars.v11.2.resources.dll = External\ru\DevExpress.XtraBars.v11.2.resources.dll
+		External\ru\DevExpress.XtraEditors.v11.2.resources.dll = External\ru\DevExpress.XtraEditors.v11.2.resources.dll
+		External\ru\DevExpress.XtraGrid.v11.2.resources.dll = External\ru\DevExpress.XtraGrid.v11.2.resources.dll
+		External\ru\DevExpress.XtraLayout.v11.2.resources.dll = External\ru\DevExpress.XtraLayout.v11.2.resources.dll
+		External\ru\DevExpress.XtraPrinting.v11.2.resources.dll = External\ru\DevExpress.XtraPrinting.v11.2.resources.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.BackupChecker", "AuxService.BackupChecker\AuxService.BackupChecker.csproj", "{9F765200-2E67-442C-822B-F046ECE96E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuxService.Installer", "AuxService.Installer\AuxService.Installer.csproj", "{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Debug|x86.ActiveCfg = Debug|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Debug|x86.Build.0 = Debug|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Release|Any CPU.ActiveCfg = Release|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Release|Mixed Platforms.Build.0 = Release|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Release|x86.ActiveCfg = Release|x86
+		{66130080-F8FA-43B9-B162-F84E878CA4E9}.Release|x86.Build.0 = Release|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Debug|x86.ActiveCfg = Debug|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Debug|x86.Build.0 = Debug|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Release|Any CPU.ActiveCfg = Release|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Release|Mixed Platforms.Build.0 = Release|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Release|x86.ActiveCfg = Release|x86
+		{567D814A-7607-4CC8-8F67-C1819134AB10}.Release|x86.Build.0 = Release|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Debug|x86.ActiveCfg = Debug|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Debug|x86.Build.0 = Debug|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Release|Any CPU.ActiveCfg = Release|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Release|x86.ActiveCfg = Release|x86
+		{87F64FC2-11B2-4242-A41A-C70DFF8FC35E}.Release|x86.Build.0 = Release|x86
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{42E3AE3E-7962-4764-B524-86E70C96912D}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9F765200-2E67-442C-822B-F046ECE96E55}.Release|x86.ActiveCfg = Release|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C23B1D6F-54ED-4AE1-9A36-0E53C5BE7172}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1585E8C-8D50-43F8-8049-9C26D0683D56} = {CFC8526E-A37E-4AB5-9352-B5758E941CEE}
+	EndGlobalSection
+EndGlobal
