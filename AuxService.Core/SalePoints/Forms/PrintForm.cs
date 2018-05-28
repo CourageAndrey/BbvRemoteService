@@ -22,14 +22,14 @@ namespace AuxService.Core.SalePoints.Forms
     /// </summary>
     /// <param name="parent">родительская форма</param>
     /// <param name="sp">ПР</param>
-    /// <param name="info">информация</param>
-    public static void Show(IWin32Window parent, SalePoint sp, PrintInfoList info)
+    /// <param name="data">информация</param>
+    public static void Show(IWin32Window parent, SalePoint sp, List<PrintInfo> data)
     {
       var dialog = new PrintForm();
       dialog.Text = string.Format("Напечатанные документы {0} {1}", sp.Code, sp.Name);
-      dialog.printInfoBindingSource.DataSource = info.Spooler;
+      dialog.printInfoBindingSource.DataSource = data;
       dialog.printInfoBindingSource.ResetBindings(false);
-      dialog.memoEditStatistics.Text = getSummary(info.Spooler).ToString();
+      dialog.memoEditStatistics.Text = getSummary(data).ToString();
       dialog.ShowDialog(parent);
     }
 

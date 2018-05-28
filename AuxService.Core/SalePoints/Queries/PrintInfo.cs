@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
-using System.IO;
 using System.Printing;
-using System.Windows.Forms;
-using System.Xml.Serialization;
-using Sef.Utility.Common;
-using Sef.Utility.Xml;
+using System.Runtime.Serialization;
 
 namespace AuxService.Core.SalePoints.Queries
 {
   /// <summary>
   /// Запись очереди печати.
   /// </summary>
+  [DataContract]
   public class PrintInfo
   {
     #region Свойства
@@ -20,42 +17,42 @@ namespace AuxService.Core.SalePoints.Queries
     /// <summary>
     /// JobSize.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public int Size
     { get; set; }
 
     /// <summary>
     /// Name.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Name
     { get; set; }
 
     /// <summary>
     /// NumberOfPages.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public int NumberOfPages
     { get; set; }
 
     /// <summary>
     /// Время снимка.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public DateTime TimeStamp
     { get; set; }
 
     /// <summary>
     /// JobIdentifier.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public int Id
     { get; set; }
 
     /// <summary>
     /// Задача сохранена.
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public bool Stored
     { get; set; }
 
@@ -121,47 +118,5 @@ namespace AuxService.Core.SalePoints.Queries
       }
       return list;
     }
-  }
-
-  /// <summary>
-  /// Полная информация о очереди печати.
-  /// </summary>
-  public class PrintInfoList
-  {
-    #region Свойства
-
-    /// <summary>
-    /// Состояния.
-    /// </summary>
-    [XmlArray("Jobs")]
-    [XmlArrayItem("PrintJob")]
-    public List<PrintInfo> Spooler
-    { get; set; }
-
-    #endregion
-
-    /// <summary>
-    /// Запрос информации.
-    /// </summary>
-    /// <returns>состояние</returns>
-    public static PrintInfoList Request()
-    {
-      var result = new PrintInfoList { Spooler = new List<PrintInfo>() };
-      var spooler = new DirectoryInfo(Path.Combine(Application.StartupPath, "Spooler"));
-
-      foreach (var file in spooler.GetFileSystemInfos("*.log*"))
-      {
-        var text = File.ReadAllText(file.FullName, FileSystemHelper.GetFileEncoding(file.FullName));
-        var lines = text.Split(separator);
-        foreach (var line in lines)
-          if (!string.IsNullOrEmpty(line.Trim()))
-            result.Spooler.Add(XmlHelper.DeserializeXml<PrintInfo>(line));
-      }
-
-      return result;
-    }
-    
-    // разделитель строк
-    private const char separator = '·';
   }
 }

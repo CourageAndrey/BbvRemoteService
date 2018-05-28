@@ -49,14 +49,12 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientService.ProcessQueries.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ClientService.Service.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -67,6 +65,7 @@
     <Compile Include="ClientService.ScheduleWork.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SalePointService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

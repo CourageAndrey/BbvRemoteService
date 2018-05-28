@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-using AuxService.Core.Settings;
-using AuxService.Core.Service;
+﻿using System.Runtime.Serialization;
 
 namespace AuxService.Core.SalePoints.Queries
 {
   /// <summary>
   /// Состояние ПР.
   /// </summary>
+  [DataContract]
   public class StatusInfo
   {
     #region Свойства
@@ -15,21 +13,21 @@ namespace AuxService.Core.SalePoints.Queries
     /// <summary>
     /// Свойство.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Parameter
     { get; set; }
 
     /// <summary>
     /// Значение.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Status
     { get; set; }
 
     /// <summary>
     /// Корректно.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public bool Valid
     { get; set; }
 
@@ -57,39 +55,5 @@ namespace AuxService.Core.SalePoints.Queries
     }
 
     #endregion
-  }
-
-  /// <summary>
-  /// Полная информация о состоянии ПР.
-  /// </summary>
-  public class StatusInfoList
-  {
-    #region Свойства
-
-    /// <summary>
-    /// Состояния.
-    /// </summary>
-    [XmlArray("Statuses")]
-    [XmlArrayItem("Status")]
-    public List<StatusInfo> Statuses
-    { get; set; }
-
-    #endregion
-
-    /// <summary>
-    /// Запрос информации.
-    /// </summary>
-    /// <returns>состояние</returns>
-    public static StatusInfoList Request()
-    {
-      var result = new StatusInfoList { Statuses = new List<StatusInfo>() };
-      foreach (var serviceName in Config.Instance.ControlledServices)
-      {
-        var service = new ServiceRecord(serviceName);
-        result.Statuses.Add(new StatusInfo(service.ServiceName, service.StatusString, service.IsInstalled && !service.IsStopped));
-      }
-
-      return result;
-    }
   }
 }

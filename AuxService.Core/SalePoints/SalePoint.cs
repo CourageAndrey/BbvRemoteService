@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using AuxService.Core.Transfer;
-using Sef.DX;
-using Sef.Utility.Applications;
 
 namespace AuxService.Core.SalePoints
 {
@@ -72,23 +67,6 @@ namespace AuxService.Core.SalePoints
     {
       Contacts = new List<string>();
       Persons = new List<string>();
-    }
-
-    /// <summary>
-    /// TCP-запрос.
-    /// </summary>
-    /// <param name="parent">родительское окно</param>
-    /// <param name="signature">запрашиваемая информация</param>
-    public void Request(IWin32Window parent, string signature)
-    {
-      try
-      {
-        Client.Send(IP, Protocol.ConnectionPort, signature, Code);
-      }
-      catch (Exception ex)
-      {
-        ErrorHelper.ShowError<ErrorForm>(null, ex);
-      }
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using AuxService.Core.SalePoints.Queries;
 using DevExpress.XtraEditors;
 
@@ -19,12 +20,12 @@ namespace AuxService.Core.SalePoints.Forms
     /// </summary>
     /// <param name="parent">родительская форма</param>
     /// <param name="sp">ПР</param>
-    /// <param name="info">информация</param>
-    public static void Show(IWin32Window parent, SalePoint sp, VersionInfoList info)
+    /// <param name="data">информация</param>
+    public static void Show(IWin32Window parent, SalePoint sp, List<VersionInfo> data)
     {
       var dialog = new VersionForm();
       dialog.Text = string.Format("Версии ПО {0} {1}", sp.Code, sp.Name);
-      dialog.versionInfoBindingSource.DataSource = info.Versions;
+      dialog.versionInfoBindingSource.DataSource = data;
       dialog.versionInfoBindingSource.ResetBindings(false);
       dialog.ShowDialog(parent);
     }

@@ -88,6 +88,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
@@ -99,7 +101,6 @@
     <Compile Include="Helpers\ConnectionStringDialog.Designer.cs">
       <DependentUpon>ConnectionStringDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Helpers\OsHelper.cs" />
     <Compile Include="Helpers\VelcomHelper.cs" />
     <Compile Include="Helpers\WmiHelper.cs" />
@@ -163,11 +164,8 @@
     <Compile Include="SalePoints\Queries\SystemInfo.cs" />
     <Compile Include="Settings\Config.cs" />
     <Compile Include="Settings\DatabaseWrapper.cs" />
-    <Compile Include="Transfer\Client.cs" />
-    <Compile Include="Transfer\Packet.cs" />
+    <Compile Include="Transfer\ISalePointService.cs" />
     <Compile Include="Transfer\Protocol.cs" />
-    <Compile Include="Transfer\Server.cs" />
-    <Compile Include="Transfer\Support classes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Spooler\Spooler.log">

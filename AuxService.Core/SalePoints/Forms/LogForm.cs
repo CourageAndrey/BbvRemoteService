@@ -24,12 +24,12 @@ namespace AuxService.Core.SalePoints.Forms
     /// </summary>
     /// <param name="parent">родительская форма</param>
     /// <param name="sp">ПР</param>
-    /// <param name="info">информация</param>
-    public static void Show(IWin32Window parent, SalePoint sp, LogInfoList info)
+    /// <param name="data">информация</param>
+    public static void Show(IWin32Window parent, SalePoint sp, List<LogInfo> data)
     {
       var dialog = new LogForm();
       dialog.Text = string.Format("Журналы работы {0} {1}", sp.Code, sp.Name);
-      dialog.logs = info.Logs;
+      dialog.logs = data;
       dialog.comboBoxEditLogSelect.Properties.Items.Clear();
       foreach (var log in dialog.logs)
         dialog.comboBoxEditLogSelect.Properties.Items.Add(log.Program);

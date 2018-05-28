@@ -1,65 +1,48 @@
-﻿namespace AuxService.Core.Transfer
+﻿using System;
+using System.Globalization;
+using System.Net;
+using System.ServiceModel;
+
+namespace AuxService.Core.Transfer
 {
-  /// <summary>
-  /// Статический класс, описывающий правила взаимодействия клиентской и серверной частей.
-  /// </summary>
-  public static class Protocol
-  {
-    /// <summary>
-    /// Сигнатура запроса оборудования.
-    /// </summary>
-    public const string GetHardSign = "#REQH";
+	/// <summary>
+	/// Статический класс, описывающий правила взаимодействия клиентской и серверной частей.
+	/// </summary>
+	public static class Protocol
+	{
+		/// <summary>
+		/// Порт для обмена данными клиент-сервер.
+		/// </summary>
+		public const int ConnectionPort = 1987;
 
-    /// <summary>
-    /// Сигнатура запроса состояния.
-    /// </summary>
-    public const string GetStatusSign = "#REQS";
+		/// <summary>
+		/// Наименование службы.
+		/// </summary>
+		public const string ServiceName = "BbvAuxService";
 
-    /// <summary>
-    /// Сигнатура запроса версий.
-    /// </summary>
-    public const string GetVersionsSign = "#REQV";
+		/// <summary>
+		/// Формат адреса службы.
+		/// </summary>
+		public const string ServiceAddressFormat = @"http://{0}:{1}/{2}";
 
-    /// <summary>
-    /// Сигнатура запроса журналов.
-    /// </summary>
-    public const string GetLogsSign = "#REQL";
+		/// <summary>
+		/// TCP-запрос.
+		/// </summary>
+		/// <param name="ip">IP-адрес клиента</param>
+		/// <returns>прокси клиентского сервиса</returns>
+		public static ISalePointService CreateClientProxy(string ip)
+		{
+			var endPoint = new EndpointAddress(new Uri(string.Format(CultureInfo.InvariantCulture, ServiceAddressFormat, ip, ConnectionPort, ServiceName)));
+			return new ChannelFactory<ISalePointService>(new BasicHttpBinding(), endPoint).CreateChannel();
+		}
 
-    /// <summary>
-    /// Сигнатура запроса траффика.
-    /// </summary>
-    public const string GetTrafficSign = "#REQT";
-
-    /// <summary>
-    /// Сигнатура запроса логов принтера.
-    /// </summary>
-    public const string GetPrintedSign = "#REQP";
-
-    /// <summary>
-    /// Сигнатура правильного конца пакета.
-    /// </summary>
-    public const string EndSign = "#END!";
-
-    /// <summary>
-    /// Используемый размер буффера.
-    /// </summary>
-    /// <remarks>по умолчанию - 4 Кб</remarks>
-    public const int BufferSize = 4 * 1024;
-
-    /// <summary>
-    /// Порт для обмена данными клиент-сервер.
-    /// </summary>
-    public const int ConnectionPort = 1987;
-
-    /// <summary>
-    /// Определение, являеются ли пришедшие данные заархивированными.
-    /// </summary>
-    /// <param name="data">данные</param>
-    /// <returns><b>true</b>, если архив</returns>
-    public static bool IsArchive(byte[] data)
-    {
-      // пакет должен начинаться с ASCII-символов "PK"
-      return (data.Length > 2) && (data[0] == 80) && (data[1] == 75);
-    }
-  }
+		/// <summary>
+		/// Получение IP-адреса компьютера.
+		/// </summary>
+		/// <returns>IPAddress</returns>
+		public static IPAddress GetLocalIP()
+		{
+			return Dns.GetHostEntry(Dns.GetHostName()).AddressList[0];
+		}
+	}
 }

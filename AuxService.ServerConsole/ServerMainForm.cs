@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;using System.Windows.Forms;
+using System.Windows.Forms;
+
 using AuxService.Core.SalePoints;
 using AuxService.Core.SalePoints.Forms;
 using AuxService.Core.SalePoints.Queries;
 using AuxService.Core.Transfer;
+
 using DevExpress.XtraEditors;
+
 using Sef.DX;
+using Sef.Utility.Applications;
 using Sef.Utility.Database;
 using Sef.Utility.Xml;
 
@@ -35,10 +39,6 @@ namespace AuxService.ServerConsole
       initializeSalePoints();
       salePointBindingSource.DataSource = salePoints;
       salePointBindingSource.ResetBindings(false);
-
-      // ожидание сетевых пакетов, отправленных по запросу клиентами
-      var server = new Server();
-      server.Receive += server_Receive;
     }
 
     // список ПР, который выводится в таблице
@@ -93,93 +93,110 @@ namespace AuxService.ServerConsole
 
     #endregion
 
-    #region Получение данных (обработчики кнопок)
+		#region Получение данных (обработчики кнопок)
 
-    private void simpleButtonLog_Click(object sender, EventArgs e)
-    {
-      var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
-      if (sp != null)
-        sp.Request(this, Protocol.GetLogsSign);
-    }
+		private void simpleButtonLog_Click(object sender, EventArgs e)
+		{
+			var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
+			if (sp != null)
+			{
+				try
+				{
+					var clientService = Protocol.CreateClientProxy(sp.IP);
+					LogForm.Show(this, sp, clientService.GetLog());
+				}
+				catch (Exception ex)
+				{
+					ErrorHelper.ShowError<ErrorForm>(null, ex);
+				}
+			}
+		}
 
-    private void simpleButtonVelcom_Click(object sender, EventArgs e)
-    {
-      var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
-      if (sp != null)
-        sp.Request(this, Protocol.GetTrafficSign);
-    }
+		private void simpleButtonVelcom_Click(object sender, EventArgs e)
+		{
+			var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
+			if (sp != null)
+			{
+				try
+				{
+					var clientService = Protocol.CreateClientProxy(sp.IP);
+					VelcomForm.Show(this, sp, clientService.GetVelcomParameters());
+				}
+				catch (Exception ex)
+				{
+					ErrorHelper.ShowError<ErrorForm>(null, ex);
+				}
+			}
+		}
 
-    private void simpleButtonServices_Click(object sender, EventArgs e)
-    {
-      var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
-      if (sp != null)
-        sp.Request(this, Protocol.GetStatusSign);
-    }
+		private void simpleButtonServices_Click(object sender, EventArgs e)
+		{
+			var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
+			if (sp != null)
+			{
+				try
+				{
+					var clientService = Protocol.CreateClientProxy(sp.IP);
+					StatusForm.Show(this, sp, clientService.GetServicesStatus());
+				}
+				catch (Exception ex)
+				{
+					ErrorHelper.ShowError<ErrorForm>(null, ex);
+				}
+			}
+		}
 
-    private void simpleButtonHardware_Click(object sender, EventArgs e)
-    {
-      var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
-      if (sp != null)
-        sp.Request(this, Protocol.GetHardSign);
-    }
+		private void simpleButtonHardware_Click(object sender, EventArgs e)
+		{
+			var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
+			if (sp != null)
+			{
+				try
+				{
+					var clientService = Protocol.CreateClientProxy(sp.IP);
+					SystemForm.Show(this, sp, clientService.GetSystemInfo());
+				}
+				catch (Exception ex)
+				{
+					ErrorHelper.ShowError<ErrorForm>(null, ex);
+				}
+			}
+		}
 
-    private void simpleButtonPrinter_Click(object sender, EventArgs e)
-    {
-      var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
-      if (sp != null)
-        sp.Request(this, Protocol.GetPrintedSign);
-    }
+		private void simpleButtonPrinter_Click(object sender, EventArgs e)
+		{
+			var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
+			if (sp != null)
+			{
+				try
+				{
+					var clientService = Protocol.CreateClientProxy(sp.IP);
+					PrintForm.Show(this, sp, clientService.GetSpooler());
+				}
+				catch (Exception ex)
+				{
+					ErrorHelper.ShowError<ErrorForm>(null, ex);
+				}
+			}
+		}
 
-    private void simpleButtonVersions_Click(object sender, EventArgs e)
-    {
-      var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
-      if (sp != null)
-        sp.Request(this, Protocol.GetVersionsSign);
-    }
+		private void simpleButtonVersions_Click(object sender, EventArgs e)
+		{
+			var sp = DevExpressHelper.GetSelectedRecord<SalePoint>(gridViewSalePoints);
+			if (sp != null)
+			{
+				try
+				{
+					var clientService = Protocol.CreateClientProxy(sp.IP);
+					VersionForm.Show(this, sp, clientService.GetVersions());
+				}
+				catch (Exception ex)
+				{
+					ErrorHelper.ShowError<ErrorForm>(null, ex);
+				}
+			}
+		}
 
-    #endregion
-
-    #region Разбор гответов от клиентов
-
-    // обработчик ответов от клиентов
-    private void server_Receive(object sender, ServerEventArgs e)
-    {
-      Invoke(new ShowForm(showForm), e.Packet);
-    }
-
-    private delegate void ShowForm(object p);
-
-    private void showForm(object p)
-    {
-      var packet = p as Packet;
-      string sign = packet.Message.Substring(0, 5);
-      string message = packet.Message.Substring(5);
-      var salePoint = salePoints.First(sp => sp.Code == packet.SenderCode);
-      switch (sign)
-      {
-        case Protocol.GetHardSign:
-          SystemForm.Show(this, salePoint, XmlHelper.DeserializeXml<SystemInfo>(message));
-          break;
-        case Protocol.GetLogsSign:
-          LogForm.Show(this, salePoint, XmlHelper.DeserializeXml<LogInfoList>(message));
-          break;
-        case Protocol.GetPrintedSign:
-          PrintForm.Show(this, salePoint, XmlHelper.DeserializeXml<PrintInfoList>(message));
-          break;
-        case Protocol.GetStatusSign:
-          StatusForm.Show(this, salePoint, XmlHelper.DeserializeXml<StatusInfoList>(message));
-          break;
-        case Protocol.GetTrafficSign:
-          VelcomForm.Show(this, salePoint, XmlHelper.DeserializeXml<VelcomInfoList>(message));
-          break;
-        case Protocol.GetVersionsSign:
-          VersionForm.Show(this, salePoint, XmlHelper.DeserializeXml<VersionInfoList>(message));
-          break;
-        default:
-          throw new NotSupportedException();
-      }
-    }
-
-    #endregion
+		#endregion
   }
 }

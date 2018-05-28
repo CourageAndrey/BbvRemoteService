@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Windows.Forms;
-using System.Xml.Serialization;
-using AuxService.Core.Helpers;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+
 using Sef.Utility.Common;
 
 namespace AuxService.Core.SalePoints.Queries
@@ -12,6 +8,7 @@ namespace AuxService.Core.SalePoints.Queries
   /// <summary>
   /// Информация о системе.
   /// </summary>
+  [DataContract]
   public sealed class SystemInfo
   {
     #region Properties
@@ -19,59 +16,56 @@ namespace AuxService.Core.SalePoints.Queries
     /// <summary>
     /// Процессор.
     /// </summary>
-    [XmlElement]
+    [DataMember]
     public CPU Processor
     { get; set; }
 
     /// <summary>
     /// Память.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public uint Memory
     { get; set; }
 
     /// <summary>
     /// Материнская плата.
     /// </summary>
-    [XmlElement]
+    [DataMember]
     public MotherBoard MotherBoard
     { get; set; }
 
     /// <summary>
     /// Список жёстких дисков.
     /// </summary>
-    [XmlArray("Disks")]
-    [XmlArrayItem("Disk")]
+    [DataMember]
     public List<Disk> HDD
     { get; set; }
 
     /// <summary>
     /// Список принтеров.
     /// </summary>
-    [XmlArray("Printers")]
-    [XmlArrayItem("Printer")]
+    [DataMember]
     public List<Printer> Printers
     { get; set; }
 
     /// <summary>
     /// Список IP-адресов.
     /// </summary>
-    [XmlArray("IPAddresses")]
-    [XmlArrayItem("Address")]
+    [DataMember]
     public List<string> IPAddresses
     { get; set; }
 
     /// <summary>
     /// Имя компьютера.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string HostName
     { get; set; }
 
     /// <summary>
     /// Им пользователя.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string UserName
     { get; set; }
 
@@ -80,35 +74,35 @@ namespace AuxService.Core.SalePoints.Queries
     /// <summary>
     /// Размер памяти.
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string MemorySize
     { get { return FileSystemHelper.FormatSize(Memory); } }
 
     /// <summary>
     /// Имя процессора.
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string ProcessorName
     { get { return Processor.Name; } }
 
     /// <summary>
     /// Скорость процессора.
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string ProcessorSpeed
     { get { return Processor.SpeedMHz.ToString("N0") + " МГц"; } }
 
     /// <summary>
     /// Производитель мат. платы.
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string MotherManufacturer
     { get { return MotherBoard.Manufacturer; } }
 
     /// <summary>
     /// Модель мат. платы.
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string MotherModel
     { get { return MotherBoard.Model; } }
 
@@ -128,69 +122,6 @@ namespace AuxService.Core.SalePoints.Queries
       Printers = new List<Printer>();
       IPAddresses = new List<string>();
     }
-    
-    /// <summary>
-    /// Получение информации о системе.
-    /// </summary>
-    /// <returns>SystemInfo</returns>
-    /// <remarks>работает медленно, т.к. использует WMI</remarks>
-    public static SystemInfo Request()
-    {
-      var info = new SystemInfo();
-
-      try
-      {
-        var cpu = WmiHelper.First(WmiHelper.QueryInfo("Win32_Processor"));
-        info.Processor = new CPU
-        {
-          Name = (string)cpu["Name"],
-          SpeedMHz = (uint)cpu["CurrentClockSpeed"]
-        };
-
-        var memory = WmiHelper.First(WmiHelper.QueryInfo("Win32_LogicalMemoryConfiguration"));
-        info.Memory = (uint)memory["TotalPhysicalMemory"]*1024;
-
-        var motherboard = WmiHelper.First(WmiHelper.QueryInfo("Win32_BaseBoard"));
-        info.MotherBoard = new MotherBoard
-        {
-          Manufacturer = (string)motherboard["Manufacturer"],
-          Model = (string)motherboard["Product"]
-        };
-
-        foreach (var disk in Environment.GetLogicalDrives())
-        {
-          var drive = new DriveInfo(disk);
-          if (drive.IsReady)
-            info.HDD.Add(new Disk
-            {
-              Name = drive.Name,
-              Label = drive.VolumeLabel,
-              TotalSpace = drive.TotalSize,
-              FreeSpace = drive.AvailableFreeSpace
-            });
-        }
-
-        info.Printers.AddRange(PrintInfo.GetPrinterList());
-        foreach (var printer in WmiHelper.QueryInfo("Win32_Printer"))
-        {
-          string name = (string) printer.Properties["Caption"].Value;
-          var printerInfo = info.Printers.Find(p => p.Caption == name);
-          if (printerInfo != null)
-            printerInfo.Model = (string)printer.Properties["DriverName"].Value;
-        }
-
-        info.HostName = SystemInformation.ComputerName;
-
-        foreach (var address in Dns.GetHostEntry(info.HostName).AddressList)
-          info.IPAddresses.Add(address.ToString());
-
-        info.UserName = SystemInformation.UserName; // можно также через System.Enironment.UserName
-      }
-      catch
-      { }
-
-      return info;
-    }
 
     #endregion
   }
@@ -200,19 +131,20 @@ namespace AuxService.Core.SalePoints.Queries
   /// <summary>
   /// Процессор.
   /// </summary>
+  [DataContract]
   public class CPU
   {
     /// <summary>
     /// Название.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Name
     { get; set; }
 
     /// <summary>
     /// Частота в МГц.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public uint SpeedMHz
     { get; set; }
   }
@@ -220,19 +152,20 @@ namespace AuxService.Core.SalePoints.Queries
   /// <summary>
   /// Материнская плата.
   /// </summary>
+  [DataContract]
   public class MotherBoard
   {
     /// <summary>
     /// Производитель.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Manufacturer
     { get; set; }
 
     /// <summary>
     /// Модель.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Model
     { get; set; }
   }
@@ -240,47 +173,48 @@ namespace AuxService.Core.SalePoints.Queries
   /// <summary>
   /// Диск.
   /// </summary>
+  [DataContract]
   public class Disk
   {
     /// <summary>
     /// Буква.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Name
     { get; set; }
 
     /// <summary>
     /// Метка.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Label
     { get; set; }
 
     /// <summary>
     /// Всего места.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public long TotalSpace
     { get; set; }
 
     /// <summary>
     /// Свободное места.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public long FreeSpace
     { get; set; }
 
     /// <summary>
     /// Всего места (формат).
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string TotalSpaceFormatted
     { get { return FileSystemHelper.FormatSize(TotalSpace); } }
 
     /// <summary>
     /// Свободное места (формат).
     /// </summary>
-    [XmlIgnore]
+    [IgnoreDataMember]
     public string FreeSpaceFormatted
     { get { return FileSystemHelper.FormatSize(FreeSpace); } }
   }
@@ -288,26 +222,27 @@ namespace AuxService.Core.SalePoints.Queries
   /// <summary>
   /// Принтер.
   /// </summary>
+  [DataContract]
   public class Printer
   {
     /// <summary>
     /// Имя в системе.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Caption
     { get; set; }
 
     /// <summary>
     /// Модель.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public string Model
     { get; set; }
 
     /// <summary>
     /// Установлен по умолчанию.
     /// </summary>
-    [XmlAttribute]
+    [DataMember]
     public bool Default
     { get; set; }
   }

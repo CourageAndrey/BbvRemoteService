@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
+using System.ServiceModel;
 using System.Threading;
 using System.Windows.Forms;
 using AuxService.Core.Helpers;
@@ -7,9 +9,10 @@ using AuxService.Core.Service;
 using AuxService.Core.Settings;
 using AuxService.Core.Transfer;
 using Microsoft.Win32;
+
 using Sef.Utility.Applications;
-using Sef.Utility.Database;
 using Sef.Utility.Log;
+
 using log4net;
 using log4net.Config;
 
@@ -62,9 +65,11 @@ namespace AuxService.ClientService
         if (ConsoleRunInvoked)
           LogHelper.Write(logMain, MessageType.Debug, string.Format("Запущен таймер, сработает через ~{0:N0} секунд...", timer.Interval/1000));
 
-        // ожидание запросов от сервера
-        var server = new Server();
-        server.Receive += server_Receive;
+		// ожидание запросов информации
+		serviceHost = new ServiceHost(
+			typeof(SalePointService),
+			new Uri(string.Format(CultureInfo.InvariantCulture, Protocol.ServiceAddressFormat, "0.0.0.0", Protocol.ConnectionPort, Protocol.ServiceName)));
+		serviceHost.Open();
         if (ConsoleRunInvoked)
           LogHelper.Write(logMain, MessageType.Debug, "Запущено ожидание запросов от сервера...");
 
@@ -109,9 +114,11 @@ namespace AuxService.ClientService
     private readonly ILog logMain;
     // журнал работы принтера
     private readonly ILog logSpooler;
+    // служба WCF
+    private ServiceHost serviceHost;
 
-    // было изменено системное время
-    private void timeChanged(object sender, EventArgs e)
+	// было изменено системное время
+	private void timeChanged(object sender, EventArgs e)
     {
       LogHelper.Write(logMain, MessageType.Warning, "Было изменено системное время!");
     }
