@@ -32,15 +32,6 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientMainForm));
       this.xtraTabControl = new DevExpress.XtraTab.XtraTabControl();
       this.xtraTabPageSetings = new DevExpress.XtraTab.XtraTabPage();
-      this.gridControlDatabases = new DevExpress.XtraGrid.GridControl();
-      this.databaseWrapperBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      this.gridViewDatabases = new DevExpress.XtraGrid.Views.Grid.GridView();
-      this.colDatabase = new DevExpress.XtraGrid.Columns.GridColumn();
-      this.repositoryItemButtonEditDatabase = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-      this.colOptimize = new DevExpress.XtraGrid.Columns.GridColumn();
-      this.simpleButtonClearBase = new DevExpress.XtraEditors.SimpleButton();
-      this.simpleButtonDeleteBase = new DevExpress.XtraEditors.SimpleButton();
-      this.simpleButtonAddBase = new DevExpress.XtraEditors.SimpleButton();
       this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
       this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
       this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -76,10 +67,6 @@
       ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).BeginInit();
       this.xtraTabControl.SuspendLayout();
       this.xtraTabPageSetings.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.gridControlDatabases)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.databaseWrapperBindingSource)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.gridViewDatabases)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditDatabase)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.configBindingSource)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.buttonEditPath.Properties)).BeginInit();
@@ -110,10 +97,6 @@
       // 
       // xtraTabPageSetings
       // 
-      this.xtraTabPageSetings.Controls.Add(this.gridControlDatabases);
-      this.xtraTabPageSetings.Controls.Add(this.simpleButtonClearBase);
-      this.xtraTabPageSetings.Controls.Add(this.simpleButtonDeleteBase);
-      this.xtraTabPageSetings.Controls.Add(this.simpleButtonAddBase);
       this.xtraTabPageSetings.Controls.Add(this.labelControl5);
       this.xtraTabPageSetings.Controls.Add(this.labelControl4);
       this.xtraTabPageSetings.Controls.Add(this.labelControl3);
@@ -130,94 +113,6 @@
       this.xtraTabPageSetings.Name = "xtraTabPageSetings";
       this.xtraTabPageSetings.Size = new System.Drawing.Size(800, 334);
       this.xtraTabPageSetings.Text = "Настройки";
-      // 
-      // gridControlDatabases
-      // 
-      this.gridControlDatabases.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.gridControlDatabases.DataSource = this.databaseWrapperBindingSource;
-      this.gridControlDatabases.Location = new System.Drawing.Point(11, 32);
-      this.gridControlDatabases.MainView = this.gridViewDatabases;
-      this.gridControlDatabases.Name = "gridControlDatabases";
-      this.gridControlDatabases.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEditDatabase});
-      this.gridControlDatabases.Size = new System.Drawing.Size(782, 187);
-      this.gridControlDatabases.TabIndex = 17;
-      this.gridControlDatabases.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewDatabases});
-      // 
-      // databaseWrapperBindingSource
-      // 
-      this.databaseWrapperBindingSource.DataSource = typeof(AuxService.Core.Settings.DatabaseWrapper);
-      // 
-      // gridViewDatabases
-      // 
-      this.gridViewDatabases.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colDatabase,
-            this.colOptimize});
-      this.gridViewDatabases.GridControl = this.gridControlDatabases;
-      this.gridViewDatabases.Name = "gridViewDatabases";
-      this.gridViewDatabases.OptionsView.ShowGroupPanel = false;
-      // 
-      // colDatabase
-      // 
-      this.colDatabase.Caption = "База данных";
-      this.colDatabase.ColumnEdit = this.repositoryItemButtonEditDatabase;
-      this.colDatabase.FieldName = "Database";
-      this.colDatabase.Name = "colDatabase";
-      this.colDatabase.Visible = true;
-      this.colDatabase.VisibleIndex = 0;
-      this.colDatabase.Width = 668;
-      // 
-      // repositoryItemButtonEditDatabase
-      // 
-      this.repositoryItemButtonEditDatabase.AutoHeight = false;
-      this.repositoryItemButtonEditDatabase.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-      this.repositoryItemButtonEditDatabase.Name = "repositoryItemButtonEditDatabase";
-      this.repositoryItemButtonEditDatabase.ReadOnly = true;
-      this.repositoryItemButtonEditDatabase.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-      this.repositoryItemButtonEditDatabase.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditDatabase_ButtonClick);
-      // 
-      // colOptimize
-      // 
-      this.colOptimize.Caption = "Оптимизировать";
-      this.colOptimize.FieldName = "Optimize";
-      this.colOptimize.Name = "colOptimize";
-      this.colOptimize.Visible = true;
-      this.colOptimize.VisibleIndex = 1;
-      this.colOptimize.Width = 137;
-      // 
-      // simpleButtonClearBase
-      // 
-      this.simpleButtonClearBase.Image = global::AuxService.ClientConsole.Properties.Resources.Clear;
-      this.simpleButtonClearBase.Location = new System.Drawing.Point(223, 3);
-      this.simpleButtonClearBase.Name = "simpleButtonClearBase";
-      this.simpleButtonClearBase.Size = new System.Drawing.Size(100, 23);
-      this.simpleButtonClearBase.TabIndex = 2;
-      this.simpleButtonClearBase.Text = "Очистить";
-      this.simpleButtonClearBase.Click += new System.EventHandler(this.simpleButtonClearBase_Click);
-      // 
-      // simpleButtonDeleteBase
-      // 
-      this.simpleButtonDeleteBase.Image = global::AuxService.ClientConsole.Properties.Resources.Delete;
-      this.simpleButtonDeleteBase.Location = new System.Drawing.Point(117, 3);
-      this.simpleButtonDeleteBase.Name = "simpleButtonDeleteBase";
-      this.simpleButtonDeleteBase.Size = new System.Drawing.Size(100, 23);
-      this.simpleButtonDeleteBase.TabIndex = 1;
-      this.simpleButtonDeleteBase.Text = "Удалить";
-      this.simpleButtonDeleteBase.Click += new System.EventHandler(this.simpleButtonDeleteBase_Click);
-      // 
-      // simpleButtonAddBase
-      // 
-      this.simpleButtonAddBase.Image = global::AuxService.ClientConsole.Properties.Resources.Add;
-      this.simpleButtonAddBase.Location = new System.Drawing.Point(11, 3);
-      this.simpleButtonAddBase.Name = "simpleButtonAddBase";
-      this.simpleButtonAddBase.Size = new System.Drawing.Size(100, 23);
-      this.simpleButtonAddBase.TabIndex = 0;
-      this.simpleButtonAddBase.Text = "Добавить...";
-      this.simpleButtonAddBase.Click += new System.EventHandler(this.simpleButtonAddBase_Click);
       // 
       // labelControl5
       // 
@@ -605,10 +500,6 @@
       this.xtraTabControl.ResumeLayout(false);
       this.xtraTabPageSetings.ResumeLayout(false);
       this.xtraTabPageSetings.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.gridControlDatabases)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.databaseWrapperBindingSource)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.gridViewDatabases)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditDatabase)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.timeEdit1.Properties)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.configBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.buttonEditPath.Properties)).EndInit();
@@ -653,23 +544,14 @@
     private DevExpress.XtraEditors.LabelControl labelControl2;
     private DevExpress.XtraEditors.TimeEdit timeEdit1;
     private System.Windows.Forms.BindingSource configBindingSource;
-    private System.Windows.Forms.BindingSource databaseWrapperBindingSource;
     private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     private DevExpress.XtraBars.PopupMenu popupMenuDatabases;
     private DevExpress.XtraBars.PopupMenu popupMenuServices;
     private DevExpress.XtraEditors.SimpleButton simpleButtonAddService;
     private DevExpress.XtraEditors.SimpleButton simpleButtonClearService;
     private DevExpress.XtraEditors.SimpleButton simpleButtonDeleteService;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonDeleteBase;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonAddBase;
-    private DevExpress.XtraEditors.SimpleButton simpleButtonClearBase;
     private DevExpress.XtraEditors.SimpleButton simpleButtonStopService;
     private DevExpress.XtraEditors.SimpleButton simpleButtonStartService;
     private DevExpress.XtraEditors.SimpleButton simpleButtonRestartService;
-    private DevExpress.XtraGrid.GridControl gridControlDatabases;
-    private DevExpress.XtraGrid.Views.Grid.GridView gridViewDatabases;
-    private DevExpress.XtraGrid.Columns.GridColumn colDatabase;
-    private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEditDatabase;
-    private DevExpress.XtraGrid.Columns.GridColumn colOptimize;
   }
 }

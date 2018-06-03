@@ -58,13 +58,6 @@ namespace AuxService.ClientService
         Config.LoadOrCreate();
         LogHelper.Write(logMain, MessageType.Information, "Прочитаны настройки...");
 
-        // запуск таймера для обработки БД
-        var timer = new System.Timers.Timer { AutoReset = false };
-        timer.Elapsed += timer_Elapsed;
-        setupTimer(timer);
-        if (ConsoleRunInvoked)
-          LogHelper.Write(logMain, MessageType.Debug, string.Format("Запущен таймер, сработает через ~{0:N0} секунд...", timer.Interval/1000));
-
 		// ожидание запросов информации
 		serviceHost = new ServiceHost(
 			typeof(SalePointService),

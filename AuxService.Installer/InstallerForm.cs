@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+
 using AuxService.Core.Service;
 using AuxService.Core.Settings;
 using AuxService.Core.Transfer;
+
 using DevExpress.XtraEditors;
-using Microsoft.Win32;
+
 using Sef.Utility.Common;
-using Sef.Utility.Database;
 
 namespace AuxService.Installer
 {
@@ -75,46 +76,9 @@ namespace AuxService.Installer
       // создание настроек по умолчанию
       Config.LoadOrCreate();
       log("Созданы настройки по умолчанию.");
-      
-      if (sqlServerPresent)
-      {
-        // подготовка
-        var serverBases = DatabaseHelper.Instance.GetDatabaseList("(local)");
-        var databases = Config.Instance.Databases.Select(database => database.Database).ToList();
 
-        // поиск базы АИС УРТ
-        var aisurtConfig = Config.Instance.Databases.Find(db => isAisurt(db.Database.Database));
-        int aisurt = serverBases.FindIndex(isAisurt);
-        if (aisurt >= 0)
-        {
-          string name = serverBases[aisurt];
-          aisurtConfig.Database.Database = name;
-          log("БД АИС УРТ обнаружена, имя - " + name);
-        }
-        else
-        {
-          databases.Remove(aisurtConfig.Database);
-          Config.Instance.Databases.Remove(aisurtConfig);
-          log("БД АИС УРТ не найдена!");
-        }
-
-        // исключение из списка лишних баз данных
-        foreach (var database in databases)
-        {
-          string dbName = database.Database;
-          if (!serverBases.Contains(dbName))
-          {
-            Config.Instance.Databases.RemoveAll(db => db.Database.Database == dbName);
-            log(string.Format("БД \"{0}\" не найдена!", dbName));
-          }
-        }
-      }
-      else
-      {
-        Config.Instance.Databases.Clear();
-        Config.Instance.OutputPath = "C:\\";
-        Config.Instance.ScheduleTime = DateTime.Now.Date;
-      }
+      Config.Instance.OutputPath = "C:\\";
+      Config.Instance.ScheduleTime = DateTime.Now.Date;
       log("Окончена предварительная настройка.");
 
       // удаление лишних сервисов
@@ -246,17 +210,6 @@ namespace AuxService.Installer
         string.Format(@"firewall add portopening TCP {0} AuxServiceRule Enable All", port), true);
       log(string.Format("Настроен брандмауэр Windows - открыт порт №{0}.", port));
 
-      // создание проверки сделанных бэкапов (добавление программы контроля в автозапуск)
-      if (Config.Instance.Databases.Count > 0)
-      {
-        using (var autorun = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
-          autorun.SetValue(
-            "AuxService",
-            Path.Combine(programDirectory.FullName, "AuxService.BackupChecker.exe"),
-            RegistryValueKind.String);
-        log("В автозагрузку добавлена проверка сделанных копий баз.");
-      }
-
       // создание пустого zip-архива на флешке (для обмана контроля при первом запуске)
       if (new DirectoryInfo(Config.Instance.OutputPath).Exists)
         using (File.Create(Path.Combine(Config.Instance.OutputPath, "backup_void.zip")))
@@ -268,8 +221,6 @@ namespace AuxService.Installer
       log("###################");
       if (toUninstall > 0)
         log(sbuilder.ToString());
-      if (Config.Instance.Databases.Count > 0)
-        log("Если в MS SQL Server настроены job-ы для архивирования баз, отключите их вручную!");
       log("Проверьте вручную, чтобы запуск старых служб был отключён, а служба AUX-клиента запускалась от имени текущего пользователя.");
       log("На данном компьютере в настоящий момент работает пользователь: " + SystemInformation.UserName);
       if (!driveFound && sqlServerPresent)

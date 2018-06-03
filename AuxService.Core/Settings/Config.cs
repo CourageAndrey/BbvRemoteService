@@ -52,14 +52,6 @@ namespace AuxService.Core.Settings
     { get; set; }
 
     /// <summary>
-    /// Базы данных, которые нуждаются в резервировании.
-    /// </summary>
-    [XmlArray("Databases")]
-    [XmlArrayItem("Database")]
-    public List<DatabaseWrapper> Databases
-    { get; set; }
-
-    /// <summary>
     /// Время запуска обработки БД.
     /// </summary>
     [XmlAttribute]
@@ -87,7 +79,6 @@ namespace AuxService.Core.Settings
     private Config()
     {
       ControlledServices = new List<string>();
-      Databases = new List<DatabaseWrapper>();
     }
 
     /// <summary>
@@ -120,13 +111,6 @@ namespace AuxService.Core.Settings
         Constants.ServiceAisurt,
         Constants.ClientServiceName,
         Constants.ServiceSql
-      });
-      Databases.Clear();
-      Databases.AddRange(new[]
-      {
-        new DatabaseWrapper(ConnectionWrapper.CreateLoginPassword(string.Empty, "BaseComplex", "sa", string.Empty), true),
-        new DatabaseWrapper(ConnectionWrapper.CreateLoginPassword(string.Empty, "BaseComplex2", "sa", string.Empty), true),
-        new DatabaseWrapper(ConnectionWrapper.CreateLoginPassword(string.Empty, "AISURT", "BlankPublishAgent", "BlankPublishAgent"), false)
       });
     }
 

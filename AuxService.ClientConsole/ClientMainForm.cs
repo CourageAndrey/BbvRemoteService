@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using AuxService.Core.Helpers;
+
 using AuxService.Core.Service;
 using AuxService.Core.Settings;
+
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+
 using Sef.DX;
-using Sef.Utility.Database;
 
 namespace AuxService.ClientConsole
 {
@@ -45,10 +46,6 @@ namespace AuxService.ClientConsole
       // общие настройки
       configBindingSource.DataSource = Config.Instance;
       configBindingSource.ResetBindings(false);
-
-      // подключения к БД
-      databaseWrapperBindingSource.DataSource = Config.Instance.Databases;
-      databaseWrapperBindingSource.ResetBindings(false);
 
       // службы
       refreshServices();
@@ -137,41 +134,6 @@ namespace AuxService.ClientConsole
     private void simpleButtonRestartService_Click(object sender, EventArgs e)
     {
       controlService(service => service.Restart(this));
-    }
-
-    private void repositoryItemButtonEditDatabase_ButtonClick(object sender, ButtonPressedEventArgs e)
-    {
-      var database = DevExpressHelper.GetSelectedRecord<DatabaseWrapper>(gridViewDatabases);
-      database.Database = ConnectionStringDialog.Execute(this, database.Database);
-      databaseWrapperBindingSource.ResetBindings(false);
-    }
-
-    #endregion
-
-    #region Управление базами данных
-
-    private void simpleButtonAddBase_Click(object sender, EventArgs e)
-    {
-      var newBase = new DatabaseWrapper(new ConnectionWrapper(), false);
-      Config.Instance.Databases.Add(newBase);
-      databaseWrapperBindingSource.ResetBindings(false);
-    }
-
-    private void simpleButtonDeleteBase_Click(object sender, EventArgs e)
-    {
-      var database = DevExpressHelper.GetSelectedRecord<DatabaseWrapper>(gridViewDatabases);
-      if (database == null)
-        return;
-      Config.Instance.Databases.Remove(database);
-      databaseWrapperBindingSource.ResetBindings(false);
-    }
-
-    private void simpleButtonClearBase_Click(object sender, EventArgs e)
-    {
-      if (XtraMessageBox.Show(this, "Очистить список?", "Удаление подключений к БД", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-        return;
-      Config.Instance.Databases.Clear();
-      databaseWrapperBindingSource.ResetBindings(false);
     }
 
     #endregion
